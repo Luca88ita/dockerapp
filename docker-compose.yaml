@@ -26,6 +26,12 @@ services:
     volumes:
       - ./be:/app
       - /app/node_modules
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPORT=5432
+      - PGPASSWORD=postgres_password
     tty: true
     ports:
       - "3000:3000"

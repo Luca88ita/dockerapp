@@ -1,16 +1,16 @@
 import pg from "pg";
 import express from "express";
-import bodyParser from "body-parser";
 
 const { Client } = pg;
 
-const client = new Client({
-  user: "postgres",
-  host: "db",
-  database: "postgres",
-  password: "1234",
-  port: 5432,
-});
+const clientOptions = {
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
+};
+const client = new Client(clientOptions);
 client.connect();
 
 const createTable = async () => {
@@ -38,6 +38,10 @@ app.get("/api/all", async (req, res) => {
     res.status(500).send("Error");
     console.log(error);
   }
+});
+
+app.get("/api/client", async (req, res) => {
+  res.send(JSON.stringify(clientOptions));
 });
 
 app.post("/api/form", async (req, res) => {
