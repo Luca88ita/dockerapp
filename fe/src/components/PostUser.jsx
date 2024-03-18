@@ -9,7 +9,7 @@ const PostUser = () => {
   });
   const createUser = async () => {
     await axios
-      .post("http://localhost:8000/api/form", user, {
+      .post("/api/form", user, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },

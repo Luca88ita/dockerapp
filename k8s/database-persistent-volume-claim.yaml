@@ -3,9 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: database-persistent-volume-claim
 spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce

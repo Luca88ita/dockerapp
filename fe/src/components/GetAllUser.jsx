@@ -5,7 +5,7 @@ const GetAllUser = () => {
   const [users, setAllUser] = useState();
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/all")
+      .get("/api/all")
       .then((response) => setAllUser(response.data))
       .catch((err) => {
         console.error(err);
